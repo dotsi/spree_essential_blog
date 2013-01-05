@@ -1,5 +1,5 @@
-class Spree::Blogs::PostsController < Spree::BaseController
-
+class Spree::Blogs::PostsController < Spree::StoreController
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   include SpreeEssentialBlog::PostsControllerHelper
 
   helper "spree/products"
