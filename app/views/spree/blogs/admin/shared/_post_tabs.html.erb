@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <%= t(".editing_post") %> &ldquo;<%= @post.title %>&rdquo;
+<% end %>
+
 <% content_for :sidebar_title do %>
   <span class="sku"><%= l (@post.posted_at || Time.now), :format => :date_only %></span>
 <% end %>

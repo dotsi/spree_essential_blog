@@ -1,44 +1,43 @@
+<%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
+
 <%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Images"} %>
 
-<table class="index sortable" data-sortable-link="<%= update_positions_admin_post_images_url(@post) -%>">
-  <thead>
-    <tr>
-      <th><%= t("thumbnail") %></th>
-      <th><%= t("alt_text") %></th>
-      <th><%= t("action") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @post.images.each do |image| %>
-      <tr id="<%= dom_id(image) %>">
-        <td><span class="handle">&nbsp;</span>&nbsp; <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
-        <td><%= image.alt %></td>
-        <td class="actions">
-          <%= link_to_with_icon('edit', t("edit"), edit_admin_post_image_url(@post, image)) %>
-          &nbsp;
-          <%= link_to_delete image, {:url => admin_post_image_url(@post, image) }%>
-        </td>
+<% content_for :page_actions do %>
+  <li><%= link_to_with_icon('icon-plus', t(:new_image), new_admin_post_image_url(@post), :remote => true, :id => 'new_image_link', :class => 'button') %></li>
+<% end %>
+
+<div id="images" data-hook></div>
+
+<% unless @post.images.any? %>
+  <div class="no-objects-found">
+    <%= t(:no_images_found) %>.
+  </div>
+<% else %>
+  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_post_images_url(@post) %>">
+    <thead>
+      <tr data-hook="images_header">
+        <th colspan="2"><%= t(:thumbnail) %></th>
+        <th><%= t(:alt_text) %></th>
+        <th class="actions"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<div id="images"></div>
-<br/>
-<p>
-    <%= link_to icon('add') + ' ' + t("new_image"), new_admin_post_image_url(@post), :id => "new_image_link" %>
-</p>
-
-<% content_for :head do %>
-  <script type="text/javascript">
-    jQuery(document).ready(function(){
-
-      jQuery('#new_image_link').click(function (event) {
-        event.preventDefault();
-        jQuery(this).hide();
-        jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#images').html(r);} });
-      });
-
-    });
-  </script>
+    <tbody>
+      <% @post.images.each do |image| %>
+        <tr id="<%= spree_dom_id image %>" data-hook="images_row" class="<%= cycle('odd', 'even')%>">
+          <td class="no-border">
+            <span class="handle"></span>
+          </td>
+          <td>
+            <%= link_to image_tag(image.attachment.url(:mini)), image.attachment.url(:post) %>
+          </td>
+          <td><%= image.alt %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_post_image_url(@post, image), :no_text => true, :data => {:action => 'edit'} %>
+            <%= link_to_delete image, { :url => admin_post_image_url(@post, image), :no_text => true } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

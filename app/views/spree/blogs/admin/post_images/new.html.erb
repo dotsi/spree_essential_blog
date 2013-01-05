@@ -1,22 +1,36 @@
-<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Images"} unless request.xhr? %>
-
-<h3><%= t("new_image") %></h3>
-
-<%= render 'spree/shared/error_messages', :target => @post_image %>
-
-<%= form_for(@post_image, :url => admin_post_images_path(@post), :html => { :multipart => true }) do |form| %>
-  <table class="basic-table">
-    <%= render "form", :form => form %>
-  </table>
-  <p class="form-buttons">
-    <%= button t("create") %>
-    or <%= link_to t("cancel"), "#", :id => "cancel_link" %>
-  </p>
+<% content_for :page_actions do %>
+  <li><%= button_link_to t(:back_to_post_images_list), admin_post_images_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<script type="text/javascript">    
-  jQuery('#cancel_link').click(function (event) { 
-    jQuery('#new_image_link').show();
-    jQuery('#images').html('');
-  }); 
-</script>
+<%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
+
+<%= render "spree/shared/error_messages", :target => @post_image %>
+
+<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Images"} unless request.xhr? %>
+
+<%= form_for([:admin, @post_image], :html => { :multipart => true }) do |f| %>
+<fieldset data-hook="new_upload">
+  <legend align="center">New Image</legend>
+
+  <div class="alpha four columns">
+    <div class="field">
+      <%= f.label :attachment %><br />
+      <%= f.file_field :attachment %>
+      <%= f.error_message_on :attachment %>
+    </div>
+  </div>
+
+  <div class="omega eight columns">
+    <div class="field">
+      <%= f.label :alt, t('description') %><br />
+      <%= f.text_field :alt, :class => 'fullwidth text' %>
+      <%= f.error_message_on :alt %>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+
+</fieldset>
+<% end %>
