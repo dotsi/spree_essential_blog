@@ -1,0 +1,31 @@
+<table class="index">
+  <colgroup>
+    <col style="width: 15%;">
+    <col style="width: 10%;">
+    <col style="width: 50%;">
+    <col style="width: 15%;">
+    <col style="width: 10%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th><%= t(:sku) %></th>
+      <th colspan="2"><%= t(:name) %></th>
+      <th><%= t(:master_price) %></th>
+      <th data-hook="admin_products_index_header_actions" class="actions"></th>
+    </tr>  
+  </thead>  
+  <tbody>
+    <% @post.post_products.each do |post_product| %>
+      <% product = post_product.product %>
+      <tr <%= "style='color: red;'" if product.deleted? %> id="<%= spree_dom_id product %>" data-hook="admin_products_index_rows" class="<%= cycle('odd', 'even') %>">
+        <td class="align-center"><%= product.sku rescue '' %></td>
+        <td class="align-center"><%= mini_image(product) %></td>
+        <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
+        <td class="align-center"><%= product.display_price rescue '' %></td>
+        <td class="actions">
+          <%= link_to_delete post_product, { :url => admin_post_product_url(@post, post_product), :no_text => true } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
