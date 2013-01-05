@@ -1,8 +1,19 @@
-<p>
-  <%= form.label :name, t("activerecord.attributes.post_category.name") %>:<br/>
-  <%= form.text_field :name, :class => 'text' %>
-</p>
-<p>
-  <%= form.label :permalink, t("activerecord.attributes.post_category.permalink") %>:<br/>
-  <%= form.text_field :permalink, :class => 'text' %>
-</p>
+<div data-hook="admin_post_category_form_fields">
+  <div class="alpha six columns">
+    <div class="field">
+      <%= f.label :name, t("activerecord.attributes.post_category.name") %>:<br/>
+      <%= f.text_field :name, :class => 'text' %>
+      <%= f.error_message_on :name %>
+    </div>
+  </div>
+
+  <div class="omega six columns">
+    <div class="field">
+      <%= f.label :permalink, t("activerecord.attributes.post_category.permalink") %>:<br/>
+      <%= f.text_field :permalink, :class => 'text' %>
+      <%= f.error_message_on :permalink %>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>

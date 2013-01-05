@@ -1,14 +1,18 @@
-<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} unless request.xhr? %>
-
-<h3><%= t("new_category") %></h3>
-
-<% if @post_category.try(:errors).present? %>
-  <%= render 'spree/shared/error_messages', :target => @post_category %>
+<% content_for :page_actions do %>
+  <li><%= button_link_to t(:back_to_post_categories_list), admin_post_categories_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<%= form_for(@post_category, :url => admin_post_categories_path(@post)) do |form| %>
-  <%= render "form", :form => form %>
-  <p class="form-buttons">
-    <%= button t("create") %>
-  </p>
+<%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
+
+<%= render "spree/shared/error_messages", :target => @post_category %>
+
+<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} unless request.xhr? %>
+
+<%= form_for([:admin, @post_category], :html => { :multipart => true }) do |f| %>
+  <fieldset data-hook="new_upload">
+    <legend align="center">New Catefory</legend>
+
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
 <% end %>

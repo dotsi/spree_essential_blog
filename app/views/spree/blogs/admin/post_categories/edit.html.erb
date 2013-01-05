@@ -1,15 +1,18 @@
-<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} %>
-
-<h3><%= t(".edit_category") %></h3>
-
-<% if @post_category.try(:errors).present? %>
-  <%= render 'spree/shared/error_messages', :target => @post_category %>
+<% content_for :page_actions do %>
+  <li><%= button_link_to t(:back_to_post_categories_list), admin_post_categories_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<%= form_for([:admin, @post, @post_category], :url => admin_post_category_path(@post, @post_category.id)) do |form| %>
-  <%= render "form", :form => form %>
-  <p class="form-buttons">
-    <%= hidden_field_tag :post_id, @post.path, :class => 'hidden' %>
-    <%= button t("update") %>
-  </p>
+<%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
+
+<%= render "spree/shared/error_messages", :target => @post_category %>
+
+<%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} %>
+
+<%= form_for([:admin, @post.id, @post_category], :url => admin_post_image_url(@post, @post_category), :html => { :multipart => true }) do |f| %>
+  <fieldset class="no-border-top">
+    <legend align="center">Edit Catefory <%= @post_category.name %></legend>
+
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
 <% end %>

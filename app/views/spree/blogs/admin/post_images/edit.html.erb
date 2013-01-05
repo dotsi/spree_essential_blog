@@ -10,6 +10,8 @@
 
 <%= form_for([:admin, @post.id, @post_image], :url => admin_post_image_url(@post, @post_image), :html => { :multipart => true }) do |f| %>
   <fieldset class="no-border-top">
+    <legend align="center">Edit Image <%= @post_image.attachment_file_name %></legend>
+
     <div class="left four columns alpha" data-hook="admin_upload_form_right">
       <% if @post_image.image_content? %>
         <%= f.field_container :preview do %>
