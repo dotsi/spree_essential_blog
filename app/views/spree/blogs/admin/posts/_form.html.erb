@@ -24,7 +24,7 @@
 
 <%= f.field_container :body do %>
   <%= f.label :body, t("activerecord.attributes.post.body") %><%#= markdown_helper %><br />
-  <%= f.text_area :body  %>
+  <%= f.text_area :body, :class => "redactor_upload" %>
   <%= error_message_on :post, :body %>
 <% end %>
 
@@ -43,27 +43,27 @@
     $(document).ready(function() {
       $('#post_posted_at').autodate();
       // $('#post_body').markItUp(markdownSettings);
-      var editor = new TINY.editor.edit('editor', {
-        id: 'post_body',
-        width: 600,
-        // height: 175,
-        cssclass: 'tinyeditor',
-        controlclass: 'tinyeditor-control',
-        rowclass: 'tinyeditor-header',
-        dividerclass: 'tinyeditor-divider',
-        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-          'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-          'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-          'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
-        footer: true,
-        fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-        xhtml: false,
-        // cssfile: 'custom.css',
-        bodyid: 'editor',
-        footerclass: 'tinyeditor-footer',
-        toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
-        resize: {cssclass: 'resize'}
-      });
+      // var editor = new TINY.editor.edit('editor', {
+      //   id: 'post_body',
+      //   width: 600,
+      //   // height: 175,
+      //   cssclass: 'tinyeditor',
+      //   controlclass: 'tinyeditor-control',
+      //   rowclass: 'tinyeditor-header',
+      //   dividerclass: 'tinyeditor-divider',
+      //   controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
+      //     'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
+      //     'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
+      //     'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
+      //   footer: true,
+      //   fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
+      //   xhtml: false,
+      //   // cssfile: 'custom.css',
+      //   bodyid: 'editor',
+      //   footerclass: 'tinyeditor-footer',
+      //   toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
+      //   resize: {cssclass: 'resize'}
+      // });
     });
   </script>
 <% end %>
