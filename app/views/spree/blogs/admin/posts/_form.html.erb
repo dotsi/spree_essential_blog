@@ -17,8 +17,8 @@
 <% end %>
 
 <%= form.field_container :body do %>
-  <%= form.label :body, t("activerecord.attributes.post.body") %><%= markdown_helper %><br />
-  <%= form.text_area :body  %>
+  <%= form.label :body, t("activerecord.attributes.post.body") %><%#= markdown_helper %><br />
+  <%= form.text_area :body, :class => "redactor_upload"  %>
   <%= error_message_on :post, :body %>
 <% end %>
 
@@ -37,7 +37,6 @@
   //<![CDATA[
     $(document).ready(function() {
       $('#post_posted_at').autodate();
-      $('#post_body').markItUp(markdownSettings);
     });
   //]]>
   </script>
