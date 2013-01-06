@@ -17,7 +17,7 @@ private
   
   def location_after_save
     path = params[:redirect_to].to_s.strip.sub(/^\/+/, "/")
-    path.blank? ? object_url : path
+    path.blank? ? admin_posts_url : path
   end 
   
   def find_resource
