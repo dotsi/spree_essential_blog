@@ -18,6 +18,12 @@ Otherwise, follow these steps to get up and running with spree_essential_blog:
 First, add spree_essential_blog to your Gemfile... it hasn't been released to Rubygems yet so we'll grab it from git.
 
 ```ruby
+# Spree 1.3.x
+gem 'spree_essential_blog', :git => 'git://github.com/bbtfr/spree_essential_blog.git', :branch => '1.3.x'
+
+# Spree 1.2.x
+gem 'spree_essential_blog', :git => 'git://github.com/bbtfr/spree_essential_blog.git', :branch => '1.2.x'
+
 # Spree 1.1.x
 gem 'spree_essential_blog', :git => 'git://github.com/citrus/spree_essential_blog.git', :branch => 'master'
 
@@ -111,6 +117,12 @@ Setup is complete. Open `localhost:3000/blog` in your browser to see your posts.
 ------------------------------------------------------------------------------
 Change Log
 ------------------------------------------------------------------------------
+
+**0.3.0 - 2011/12/15**
+
+* Depend on Spree 1.3.0 
+* Release v0.3.0
+
 
 **0.1.0 - 2011/12/15**
 
