@@ -1,11 +1,17 @@
-<%= form.field_container :name do %>
-  <%= form.label :name, t("activerecord.attributes.blog.name") %><br />
-  <%= form.text_field :name, :class => "text" %>
-  <%= error_message_on :blog, :name %>
-<% end %>
+<div class="alpha six columns">
+  <%= f.field_container :name do %>
+    <%= f.label :name, t("activerecord.attributes.blog.name") %><br />
+    <%= f.text_field :name, :class => "text" %>
+    <%= error_message_on :blog, :name %>
+  <% end %>
+</div>
 
-<%= form.field_container :permalink do %>
-  <%= form.label :permalink, t("activerecord.attributes.blog.permalink") %><br />
-  <%= form.text_field :permalink, :class => "text" %>
-  <%= error_message_on :blog, :permalink %>
-<% end %>
+<div class="omega six columns">
+  <%= f.field_container :permalink do %>
+    <%= f.label :permalink, t("activerecord.attributes.blog.permalink") %><br />
+    <%= f.text_field :permalink, :class => "text" %>
+    <%= error_message_on :blog, :permalink %>
+  <% end %>
+</div>
+
+<div class="clear"></div>

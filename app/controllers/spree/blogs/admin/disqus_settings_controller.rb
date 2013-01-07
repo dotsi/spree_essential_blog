@@ -1,9 +1,5 @@
 class Spree::Blogs::Admin::DisqusSettingsController < Spree::Admin::BaseController
-
-  def show
-    @preferences = ['disqus_shortname']
-    @config = Spree::BlogConfiguration.new
-  end
+  helper_method :collection_url
 
   def edit
     @preferences = ['disqus_shortname']
@@ -18,7 +14,13 @@ class Spree::Blogs::Admin::DisqusSettingsController < Spree::Admin::BaseControll
       config[name] = value
     end
 
-    redirect_to admin_disqus_settings_path
+    redirect_to edit_admin_disqus_settings_path
   end
+
+  protected
+
+    def collection_url
+      admin_disqus_settings_url
+    end
 
 end

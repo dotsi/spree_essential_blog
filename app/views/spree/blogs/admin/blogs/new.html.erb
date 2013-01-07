@@ -1,14 +1,17 @@
-<h3><%= t('.new_blog') %></h3>
+<%= render :partial => 'spree/admin/shared/configuration_menu' unless request.xhr? %>
 
-<% if @blog.try(:errors).present? %>
-  <%= render 'spree/shared/error_messages', :target => @blog %>
+<% content_for :page_actions do %>
+  <li><%= button_link_to t(:back_to_blogs_list), admin_blogs_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
+<%= render "spree/shared/error_messages", :target => @blog %>
+
 <%= form_for([:admin, @blog]) do |f| %>
-  <%= render "form", :form => f %>
-  <p class="form-buttons">
-    <%= button t("create") %> <%= t('or') %> <%= link_to t('cancel'), collection_url %>
-  </p>
+<fieldset data-hook="new_blog">
+  <legend align="center"><%= t('.new_blog') %></legend>
+  <%= render "form", :f => f %>
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+</fieldset>
 <% end %>
 
 <%= render "spree/blogs/admin/shared/select_configuration_tab" unless request.xhr? %>
