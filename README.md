@@ -118,7 +118,7 @@ Setup is complete. Open `localhost:3000/blog` in your browser to see your posts.
 Change Log
 ------------------------------------------------------------------------------
 
-**0.3.0 - 2011/12/15**
+**0.3.0 - 2013/1/6**
 
 * Depend on Spree 1.3.0 
 * Release v0.3.0
