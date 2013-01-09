@@ -76,7 +76,8 @@ class Spree::Post < ActiveRecord::Base
 	
     def render(val)
       val = val.is_a?(Symbol) ? send(val) : val
-      RDiscount.new(val).to_html.html_safe
+      # RDiscount.new(val).to_html.html_safe
+      val.to_html.html_safe
     end
 		
     def create_path
