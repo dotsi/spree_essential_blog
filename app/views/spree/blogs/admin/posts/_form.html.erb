@@ -24,7 +24,7 @@
 
 <%= f.field_container :body do %>
   <%= f.label :body, t("activerecord.attributes.post.body") %><%#= markdown_helper %><br />
-  <%= f.text_area :body, :class => "redactor_upload" %>
+  <%= f.text_area :body, :class => "fullwidth" %>
   <%= error_message_on :post, :body %>
 <% end %>
 
@@ -42,6 +42,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('#post_posted_at').autodate();
+      CKEDITOR.replace('post_body');
     });
   </script>
 <% end %>
