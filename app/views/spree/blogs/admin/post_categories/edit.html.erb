@@ -2,14 +2,14 @@
   <li><%= button_link_to t(:back_to_post_categories_list), admin_post_categories_url, :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/contents_sub_menu' %>
+<%#= render :partial => 'spree/admin/shared/contents_sub_menu' %>
 
 <%= render "spree/shared/error_messages", :target => @post_category %>
 
 <%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} %>
 
 <%= form_for([:admin, @post.id, @post_category], :url => admin_post_image_url(@post, @post_category), :html => { :multipart => true }) do |f| %>
-  <fieldset class="no-border-top">
+  <fieldset>
     <legend align="center">Edit Catefory <%= @post_category.name %></legend>
 
     <%= render :partial => 'form', :locals => {:f => f} %>
