@@ -1,0 +1,106 @@
+zh-CN:
+
+  # Spree Hax! Missing translation...
+  image_settings_description: 图片设置
+
+  activerecord:
+    attributes:
+      blog:
+        model_name: 博客
+        name: 名称
+        permalink: 静态标识符
+      post:
+        model_name: 文章
+        title: 标题
+        posted_at: 发布于
+        body: 内容
+        live: 发布
+        tags: 标签
+      post_category:
+        model_name: 分类
+        name: 名称
+        permalink: 静态标识符
+
+  spree:
+
+    admin:
+      subnav:
+        posts: 文章
+
+    blogs:
+      admin:
+        blogs:
+          new:
+            new_blog: 新建博客
+          index:
+            new_blog: 新建博客
+
+
+        posts:
+          new:
+            new_post: 新建文章
+        post_products:
+          index:
+            add_related_product: 添加关联产品
+        post_categories:
+          index:
+            manage_categories: 管理分类
+        new:
+          new_category: 新建分类
+        edit:
+          edit_category: 编辑分类
+
+        shared:
+          post_tabs:
+            post_details: 文章详细信息
+            editing_post: 编辑文章
+            related_products: 关联产品
+            post_categories: 分类
+      comments: 评论
+      home:
+        title: 最近的文章
+      archive: 博客归档
+      no_posts: 没有找到文章！
+      posts:
+        index:
+          blog: 博客
+          rss: 通过RSS订阅
+        archive:
+          title: 归档
+          where_to_next: Where to next?
+          go_to_store: "Shop the Store"
+          back_to_posts: "Back to the blog"
+        show:
+          tagged: 已加标签
+      settings:
+        blogs: 管理博客
+        explain_blogs: 添加或编辑博客来发表文章。
+        disqus: Disqus 设置
+        explain_disqus: 为博客设置 Disqus 帐号管理评论。
+        disqus_shortname: Disqus Shortname
+      shared:
+        sidebar:
+          recent_posts: 最近的文章
+          categories: 分类
+          archives: 归档
+          view_archive: 查看完整归档
+          tags: 标签
+        preview:
+          read_more: 了解更多
+        post_tabs:
+          editing_post: 编辑文章
+          post_details: 文章详细信息
+          related_products: 关联产品
+          post_categories: 分类
+      subnav:
+        posts: 文章
+
+  time:
+    formats:
+      date_time: "%x %X"
+      date_full: "%A %B %d, %Y"
+      detailed: "%A %B %d, %Y at %I:%M%p"
+      date_only: "%x"
+  date:
+    formats:
+      month_year: "%B %Y"
