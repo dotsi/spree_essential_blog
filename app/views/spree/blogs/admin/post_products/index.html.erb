@@ -29,14 +29,18 @@
     $(document).ready(function(){
 
       $("#add_product_to_post").on("click", function(){
-        if($('#add_variant_id').val() == ''){ return false; }
+        //if($('#add_variant_id').val() == ''){ return false; }
         update_target = $(this).attr("data-update");
-        $.ajax({ dataType: 'script', url: this.href, type: "POST",
-            data: {"variant_id": $('#add_variant_id').val()},
-            success: function(data) {
-              $('#products-table-wrapper').html(data);
+        $.ajax({ dataType: 'text', url: this.href, type: "POST",
+            data: {"variant_id": $('#add_variant_id').val(),
+                   "taxon_id": $('#add_taxon_id').val()
+            },
+            success: function(response, xhr) {
+              console.log(response);
+              $('#products-table-wrapper').html(response);
               $('#add_product_name').val('');
               $('#add_variant_id').val('');
+              $('#add_taxon_id').val('');
             }
         });
         return false;

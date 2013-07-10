@@ -1,18 +1,31 @@
-<div class="post-preview"  data-hook="post-preview">
+<li class="post-preview four columns eightOnLandscape"  data-hook="post-preview">
 
   <div class="post-title"  data-hook="post-title">
-    <h2><%= link_to h(post.title), post_seo_path(@blog, post) %></h2>
-    <h5><%= l post.posted_at, :format => :date_full %></h5>
+    <% if post.blog.permalink == 'blog' %>
+      <h5 style="line-height:20px;"><%= l post.posted_at, :format => :date_only %></h5>
+    <% end %>
+    <h2 style="line-height:20px;"><%= link_to h(post.title), post_seo_path(post.blog, post) %></h2>
+    <%# if post.blog.permalink == 'blog' %>
+    <!-- <h5 style="line-height:20px;"><%#= l post.posted_at, :format => :date_only %></h5> -->
+    <%# end %>
   </div>
 
   <% if post.has_images? %>
-    <p class="post-images"><%= link_to image_tag(post.images.first.attachment.url, :alt => post.title), post_seo_path(@blog, post) %></p>
+    <div class="post-images fl four columns threeOnBig sixOnDesktop alpha mt1em mb1em"><%= link_to image_tag(post.images.first.attachment.url, :alt => post.title), post_seo_path(post.blog, post) %></div>
   <% end %>
 
-  <%= post.rendered_preview %>
+  <p style="font-size:14px;line-height:20px;"><%=raw shorten(strip_tags(post.rendered_preview), 190) %></p>
 
-  <br class="clear" />
+  <!-- <br class="clear" /> -->
 
-  <p><%= link_to t('.read_more'), post_seo_path(@blog, post) %></p>
+  <!-- <p> -->
+    <%= link_to post_seo_path(@blog, post), :class => "db mb2em", :style => "font-size:14px;line-height:20px;" do %>
+      <%= t('.read_more') %> <i class="ml5 icon-angle-right"></i>
+    <% end %>
+  <!-- </p> -->
 
-</div>
+  <%# if post.blog.permalink == 'blog' %>
+    <!-- <div style="font-size:13px;line-height:20px;"><%#= l post.posted_at, :format => :date_only %></div> -->
+  <%# end %>
+
+</li>

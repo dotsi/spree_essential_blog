@@ -61,14 +61,14 @@
 .post-archive ul.archive li ul.posts {
   list-style-type: none;
   display: block;
-  float: left;
-  width: 90%;
+  /*float: left;*/
+  /*width: 90%;*/
   margin: 0;
   padding: 0;
 }
-.post-archive ul.archive li ul.posts li {
+/*.post-archive ul.archive li ul.posts li {
   margin: 0 0 0.5em 0; 
-}
+}*/
 
 
 /* ========================================== 
@@ -76,12 +76,20 @@
 */
 
 .post-preview {
-  clear: both;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #ddd;
+  /*clear: both;*/
+  /*padding-bottom: 1em;*/
+  /*border-bottom: 1px solid #ddd;*/
 }
+
+@media only screen and (min-width: 1200px) {
+  
+  /*.post-preview:nth-child(2n+1) {margin-left:0 !important;}*/
+  /*.post-preview:nth-child(2n+2) {margin-right:0 !important;}*/
+}
+
 .post-preview h2 {
   margin-bottom: 0;
+  font-size: 18px;
 }
 .post-comments {
   clear: both;

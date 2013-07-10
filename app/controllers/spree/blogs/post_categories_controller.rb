@@ -6,7 +6,7 @@ class Spree::Blogs::PostCategoriesController < Spree::StoreController
   
   def show
     @category = Spree::PostCategory.find_by_permalink(params[:id])
-    @posts = @category.posts.live
+    @posts = @category.posts.live.where(:blog_id => @blog)
     @posts = @posts.page(params[:page]).per(Spree::Post.per_page)
   end
   

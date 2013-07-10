@@ -4,8 +4,16 @@ class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
   
   def create
     position = @post.products.count
-    @product = Spree::Variant.find(params[:variant_id]).product
-    Spree::PostProduct.create(:post_id => @post.id, :product_id => @product.id, :position => position)
+    if params[:taxon_id] != ""
+      @taxon = Spree::Taxon.find(params[:taxon_id])
+      for p in @taxon.products
+        Spree::PostProduct.create(:post_id => @post.id, :product_id => p.id, :position => position)
+        position += 1
+      end
+    else  
+      @product = Spree::Variant.find(params[:variant_id]).product
+      Spree::PostProduct.create(:post_id => @post.id, :product_id => @product.id, :position => position)
+    end
     render :partial => "spree/blogs/admin/post_products/related_products_table", :locals => { :post => @post }, :layout => false
   end
     

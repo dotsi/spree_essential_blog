@@ -1,37 +1,109 @@
+<% self.title = @post.title %>
+<% content_for :head do %>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@LekarnarTim">
+  <meta name="twitter:creator" content="@LekarnarTim">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="<%= "http://"+Spree::Config[:site_url] + post_seo_path(@blog, @post) %>">
+  <meta property="og:title" content="<%= @post.title %>">
+  <meta property="og:description" content="<%= shorten(strip_tags(@post.body), 200) %>">
+  <meta property="og:image" content="<%= "http://"+Spree::Config[:site_url]+@post.images.first.attachment.url(:medium) if @post.images.size > 0 %>">
+
+  <script type="text/javascript">
+(function(d){
+  var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+  p.type = 'text/javascript';
+  p.async = true;
+  p.src = '//assets.pinterest.com/js/pinit.js';
+  f.parentNode.insertBefore(p, f);
+}(document));
+</script>
+
+<% end %>
+
+<% content_for :body_class do %>two-col three-col<% end %>
+
 <% content_for :sidebar do %>
   <%= render :partial => 'spree/blogs/shared/sidebar' %>
 <% end %>
 
-<div class="post" data-hook="post-show">
-
-  <div class="post-title" data-hook="post-show-title">
-    <h5><%= h l(@post.posted_at, :format => :date_full).gsub(/\s0/, ' ') %></h5>
-    <h1><%=h @post.title %></h1>
-  </div>
-
-  <% if @post.has_images? %>
-    <div class="post-images" data-hook="post-show-image">
-      <% @post.images.each_with_index do |image, index| %>
-   	    <p><%= link_to image_tag(image.attachment.url(:medium), :alt => ((image.alt != "") ? image.alt : "#{@post.title} - Slika #{index + 1}")), image.attachment.url(:large), :id => "photo_#{index}" %></p>
- 	    <% end %>
+<div class="post eightColOnBig1 eightContOnBig alphaOnBig1 fw300" data-hook="post-show">
+<!-- <div class="columns"> -->
+  <div class="content">
+    <div class="post-title twelve columns eightOnBig" data-hook="post-show-title">
+      <% if @blog.permalink == "blog" %><h5><%= h l(@post.posted_at, :format => :date_only).gsub(/\s0/, ' ') %></h5><% end %>
+      <h1><%=h @post.title %></h1>
     </div>
-  <% end %>
 
-  <%= @post.rendered_body %>
-
-  <br class="clear"/>
-
-  <div class="post-tags" data-hook="post-show-tags">
-    <h5><%= t('.tagged') %>:</h5>
-    <p><%= @post.tags.collect{|tag| link_to(tag.name, search_posts_path(@blog, tag.name)) }.join(", ").html_safe %></p>
+    <% if @post.has_images? %>
+      <div class="post-images twelve columns eightOnBig" data-hook="post-show-image">
+        <% @post.images.each_with_index do |image, index| %>
+     	    <p><%= image_tag(image.attachment.url(:medium), :alt => ((image.alt != "") ? image.alt : "#{@post.title} - Slika #{index + 1}")) %></p>
+   	    <% end %>
+      </div>
+    <% end %>
+    
+    <div class="post-body twelve columns eightOnBig" data-hook="post-show-body">
+      <%= @post.rendered_body %>
+    </div>  
+    <!-- <br class="clear"/> -->
+    <% tags =  @post.tags.collect{|tag| link_to(tag.name, search_posts_path(@blog, tag.name)) } %>
+    <% if tags.size > 0 %>
+    <div class="post-tags twelve columns eightOnBig" data-hook="post-show-tags">
+      <h5><%= t('.tagged') %>:</h5>
+      <p><%= tags.join(", ").html_safe %></p>
+    </div>
+    <% end %>
+    <div class="post-tags twelve columns eightOnBig" data-hook="post-share">
+      <ul class="social-likes social-likes_single" data-single-title="Deli">
+        <li class="facebook" title="Objavi izdelek na Facebooku">Facebook</li>
+        <li class="twitter" title="Objavi povezavo na Twitter">Twitter</li>
+        <li class="plusone" title="Objavi povezavo na Google+">Google+</li>
+        <li class="pinterest" title="Objavi sliko na Pinterest" data-media="">Pinterest</li>
+      </ul>
+    </div>
   </div>
 
   <% unless @post.products.empty? %>
+    <%#= render 'spree/shared/carousel', :products => @post.products %>
+
+  <div class="baseGrid1 pr productSlider1 featuredProducts fl clearfix1 mt1lh mb1lh">
+    <div class="sixteen1 twelve columns eightOnBig alpha1 omega1" style="border-top:2px solid #d0d2d1; padding-top:8px;"></div>
+    <!-- <button class="prev pa bg0 b0 c01" style="z-index:4; color:silver !important; top:50%; left:10px;">
+      <i class="icon-chevron-left"></i>
+    </button> -->
+
+    <ul class="slides1 products asRows fl mt1lh mb1lh">
+        <% @post.products.each do |product| %>
+          <!-- <li class="four columns"> -->
+          <%= render 'spree/shared/product_simple', :product => product %>
+          <!-- </li> -->
+        <% end %>
+    </ul>
+    <!-- <button class="next pa bg0 b0 c01" style="z-index:4; color:silver !important; top:50%; right:10px;">
+      <i class="icon-chevron-right"></i>
+    </button>
     <div class="post-products" data-hook="post-show-related-products">
-      <%= render 'spree/shared/products', :products => @post.products %>
-    </div>
+      <%# render 'spree/shared/products', :products => @post.products %>
+    </div> -->
+  </div>
   <% end %>
 
   <%= render "spree/blogs/shared/disqus_comments" %>
 
+<!-- </div> -->
+</div>
+<div class="rightSide fl fourContOnBig container1 fourColOnBig1 omegaOnBig1 clearfix mb1lh">
+  <!--<h3 class="twelve fourOnDesktop1 fourOnBig columns">Oglasi</h3>-->
+  <div class="banner four columns alpha1 mb1lh">
+   <a data-pin-do="embedUser" href="http://pinterest.com/lekarnar/"></a>
+  </div>
+  <div class="banner four columns alpha1 mb1lh">
+    <a class="twitter-timeline" href="https://twitter.com/LekarnarTim" data-widget-id="354522049110233088">Tweets by @LekarnarTim</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </div>
+  <div class="banner four columns alpha1 mb1lh">
+    
+  </div>
 </div>
