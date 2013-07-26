@@ -1,0 +1,106 @@
+sl:
+
+  # Spree Hax! Missing translation...
+  image_settings_description: "Nastavitve slik"
+
+  activerecord:
+    attributes:
+      blog:
+        model_name: Blog
+        name: Ime
+        permalink: Permalink
+      post:
+        model_name: Objava
+        title: Naslov
+        posted_at: Datum objave
+        body: Vsebina
+        live: Objavljeno
+        tags: Oznake
+      post_category:
+        model_name: Kategorija
+        name: Ime
+        permalink: Permalink
+
+  spree:
+
+    admin:
+      subnav:
+        posts: Objave
+
+    blogs:
+      admin:
+        blogs:
+          new:
+            new_blog: Nov blog
+          index:
+            new_blog: Nov blog
+
+
+        posts:
+          new:
+            new_post: Nova objava
+        post_products:
+          index:
+            add_related_product: Dodaj povezane izdelke
+        post_categories:
+          index:
+            manage_categories: Uredi kateorije
+        new:
+          new_category: Nova kategorija
+        edit:
+          edit_category: Uredi kategorijo
+
+        shared:
+          post_tabs:
+            post_details: Podrobnosti objave
+            editing_post: Urejanje objave
+            related_products: Povezani izdelki
+            post_categories: Kategorije
+      comments: Komentarji
+      home:
+        title: Zadnje objave
+      archive: Arhiv
+      no_posts: Ni objav.
+      posts:
+        index:
+          blog: Blog
+          rss: Naročite se na RSS objave
+        archive:
+          title: Arhiv
+          where_to_next: Kam naprej?
+          go_to_store: "V lekarno"
+          back_to_posts: "Nazaj na blog"
+        show:
+          tagged: Označeno
+      settings:
+        blogs: Uredi bloge
+        explain_blogs: Dodaj ali uredi bloge.
+        disqus: Disqus nastavitve
+        explain_disqus: Nastavi Disqus komentarje za blog.
+        disqus_shortname: Disqus Shortname
+      shared:
+        sidebar:
+          recent_posts: Zadnje objave
+          categories: Kategorije
+          archives: Arhiv
+          view_archive: Celoten arhiv
+          tags: Oznake
+        preview:
+          read_more: beri naprej
+        post_tabs:
+          editing_post: Urejanje objave
+          post_details: Podrobnosti objave
+          related_products: Povezani izdelki
+          post_categories: Kategorije
+      subnav:
+        posts: Objave na blogu
+
+  time:
+    formats:
+      date_time: "%-d.%-m.%Y %R"
+      date_full: "%-d.%-m.%Y"
+      detailed: "%-d.%-m.%Y ob %H:%M"
+      date_only: "%x%-d. %-m. %Y"
+  date:
+    formats:
+      month_year: "%B %Y"

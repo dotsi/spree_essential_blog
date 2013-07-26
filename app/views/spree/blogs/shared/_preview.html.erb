@@ -11,7 +11,12 @@
   </div>
 
   <% if post.has_images? %>
-    <div class="post-images fl four columns threeOnBig sixOnDesktop alpha mt1em mb1em"><%= link_to image_tag(post.images.first.attachment.url, :alt => post.title), post_seo_path(post.blog, post) %></div>
+    <div class="post-images product fl four columns threeOnBig sixOnDesktop alpha mt1em mb1em">
+      <%= link_to image_tag(post.images.first.attachment.url, :alt => post.title), post_seo_path(post.blog, post) %>
+      <% if post.expired? %>
+        <span class="special sale" style="right:auto; left:10px; top:10px;">poteklo</span>
+      <% end %>
+    </div>
   <% end %>
 
   <p style="font-size:14px;line-height:20px;"><%=raw shorten(strip_tags(post.rendered_preview), 190) %></p>

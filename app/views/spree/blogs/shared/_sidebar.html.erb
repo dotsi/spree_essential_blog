@@ -1,5 +1,14 @@
 <div class="post-sidebar four columns eightOnLandscape" data-hook="post-sidebar">
 
+  <ul id="blogTabs" class="nav nav-tabs cb1 horizontal lsn m0 clearfix hideOnLTELandscape1">
+    <li<% if (@post && @post.blog.permalink == 'blog') || (@posts && @posts.first.blog.permalink == 'blog')%> class="active"<% end %>><a href="/blog" title="Blog" class="cp">Blog</a></li>
+    <%# if !@product.consultants.empty? %>
+    <li<% if (@post && @post.blog.permalink != 'blog') || (@posts && @posts.first.blog.permalink != 'blog')%> class="active"<% end %>><a href="/clanki" title="Članki" class="cp">Članki</a></li>
+    <%# end %>
+    <!-- <li><a href="#mnenja" data-toggle="tab" title="">Mnenja</a></li> -->
+  </ul>
+  <div class="pr mb1lh" style="border-bottom:2px solid #e8e8e8;z-index:0;"></div>
+
   <h6 class="sidebarTitle"><%= t('.recent_posts') %></h6>  <!-- h3 --> 
   <%= render 'spree/blogs/shared/archive', :posts => @archive_posts %>
   

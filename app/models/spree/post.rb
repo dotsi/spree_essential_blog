@@ -1,6 +1,6 @@
 class Spree::Post < ActiveRecord::Base
   
-  attr_accessible :blog_id, :title, :teaser, :body, :posted_at, :author, :live, :tag_list, :post_category_ids, :product_ids_string, :products_title, :link_title
+  attr_accessible :blog_id, :title, :teaser, :body, :posted_at, :author, :live, :tag_list, :post_category_ids, :product_ids_string, :products_title, :link_title, :expires_at
   
   acts_as_taggable
 
@@ -58,6 +58,10 @@ class Spree::Post < ActiveRecord::Base
 
   def live?
     live && live == true
+  end
+
+  def expired?
+    expires_at && expires_at < Time.now
   end
 
   def to_param

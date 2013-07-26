@@ -10,7 +10,7 @@ module SpreeEssentialBlog::PostsControllerHelper
 private
   
   def default_scope
-    @blog.posts.live
+    @blog.posts.past.live
   end
   
   def get_sidebar

@@ -46,6 +46,13 @@
   <%= error_message_on :post, :link_title %>
 <% end %>
 
+<%= f.field_container :posted_at do %>
+  <%= f.label :expires_at, "Akcija poteče" %><br />
+  <%= f.text_field :expires_at, :class => '', :value => ((l @post.expires_at, :format => :date_time) unless @post.expires_at.nil?) %><br />
+  <%= error_message_on :post, :expires_at %>
+<% end %>
+
+
 <%= f.field_container :live do %>
   <%= f.check_box :live  %> <%= f.label :live, t("activerecord.attributes.post.live") %><br />
 <% end %>

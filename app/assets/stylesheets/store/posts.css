@@ -90,6 +90,7 @@
 .post-preview h2 {
   margin-bottom: 0;
   font-size: 18px;
+  height: 40px;
 }
 .post-comments {
   clear: both;

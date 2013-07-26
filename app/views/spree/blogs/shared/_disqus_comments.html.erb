@@ -1,6 +1,6 @@
 <% disqus_short_name = ::SpreeEssentialBlog::Config.preferred_disqus_shortname %>
 <% if !disqus_short_name.blank? %>
-  <div class="post-comments twelve columns eightOnBig">
+  <div class="post-comments twelve columns eightOnBig mb2lh">
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = <%== disqus_short_name.inspect %>;
@@ -16,7 +16,7 @@
           this.language = "sl";
         };
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    <noscript>Prosimo vklopite JavaScript če želite videti komentarje <a href="http://disqus.com/?ref_noscript">platforme Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">Komentarji <span class="logo-disqus">Disqus</span></a>
   </div>
 <% end %>

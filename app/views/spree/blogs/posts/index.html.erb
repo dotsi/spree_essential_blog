@@ -2,7 +2,8 @@
 <% content_for :wrapper_class do %>blog<% end %>
 
 <%= link_to blog_posts_path(@blog, :format => 'rss'), :id => "posts-rss", :class => "db", :style => "margin-right:10px;line-height:30px;" do %>
-  <%= image_tag 'blog/rss.png', :alt => t('spree.blogs.posts.index.rss') %>
+  <%#= image_tag 'blog/rss.png', :alt => t('spree.blogs.posts.index.rss') %>
+  <i class="icon-rss"></i>
   <%= t('spree.blogs.posts.index.rss') %>
 <% end %>
 
