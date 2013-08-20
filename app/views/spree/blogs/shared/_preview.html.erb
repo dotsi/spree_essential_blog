@@ -5,9 +5,7 @@
       <h5 style="line-height:20px;"><%= l post.posted_at, :format => :date_only %></h5>
     <% end %>
     <h2 style="line-height:20px;"><%= link_to h(post.title), post_seo_path(post.blog, post) %></h2>
-    <%# if post.blog.permalink == 'blog' %>
-    <!-- <h5 style="line-height:20px;"><%#= l post.posted_at, :format => :date_only %></h5> -->
-    <%# end %>
+
   </div>
 
   <% if post.has_images? %>
@@ -21,16 +19,9 @@
 
   <p style="font-size:14px;line-height:20px;"><%=raw shorten(strip_tags(post.rendered_preview), 190) %></p>
 
-  <!-- <br class="clear" /> -->
 
-  <!-- <p> -->
     <%= link_to post_seo_path(@blog, post), :class => "db mb2em", :style => "font-size:14px;line-height:20px;" do %>
       <%= t('.read_more') %> <i class="ml5 icon-angle-right"></i>
     <% end %>
-  <!-- </p> -->
-
-  <%# if post.blog.permalink == 'blog' %>
-    <!-- <div style="font-size:13px;line-height:20px;"><%#= l post.posted_at, :format => :date_only %></div> -->
-  <%# end %>
 
 </li>

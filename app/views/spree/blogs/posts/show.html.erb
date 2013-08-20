@@ -27,8 +27,7 @@
   <%= render :partial => 'spree/blogs/shared/sidebar' %>
 <% end %>
 
-<div class="post eightColOnBig1 eightContOnBig alphaOnBig1 fw300" data-hook="post-show">
-<!-- <div class="columns"> -->
+<div class="post eightContOnBig fw300" data-hook="post-show">
   <div class="content">
     <div class="post-title twelve columns eightOnBig" data-hook="post-show-title">
       <% if @blog.permalink == "blog" %><h5><%= h l(@post.posted_at, :format => :date_only).gsub(/\s0/, ' ') %></h5><% end %>
@@ -57,7 +56,7 @@
         <p class="i">Akcija je potekla.</p>
       <% end %>
     </div>  
-    <!-- <br class="clear"/> -->
+
     <% tags =  @post.tags.collect{|tag| link_to(tag.name, search_posts_path(@blog, tag.name)) } %>
     <% if tags.size > 0 %>
     <div class="post-tags twelve columns eightOnBig" data-hook="post-show-tags">
@@ -66,7 +65,7 @@
     </div>
     <% end %>
     <div class="post-tags twelve columns eightOnBig mb1lh" data-hook="post-share">
-      <ul class="social-likes social-likes_single" data-single-title="Deli">
+      <ul class="social-likes social-likes_single" data-single-title="Deli s prijatelji">
         <li class="facebook" title="Objavi izdelek na Facebooku">Facebook</li>
         <li class="twitter" title="Objavi povezavo na Twitter">Twitter</li>
         <li class="plusone" title="Objavi povezavo na Google+">Google+</li>
@@ -80,43 +79,33 @@
     <% if @post.products_title != "" %>
       <h3 class="twelve columns mt1lh" style="line-height:30px;"><%= @post.products_title %></h3>
     <% end %>
-  <div class="baseGrid1 pr productSlider1 featuredProducts fl fw400 clearfix1 mb1lh">
-    <div class="sixteen1 twelve columns eightOnBig alpha1 omega1" style="border-top:2px solid #d0d2d1; padding-top:8px;"></div>
-    <!-- <button class="prev pa bg0 b0 c01" style="z-index:4; color:silver !important; top:50%; left:10px;">
-      <i class="icon-chevron-left"></i>
-    </button> -->
+  <div class="pr featuredProducts fl fw400 mb1lh">
+    <div class="twelve columns eightOnBig" style="border-top:2px solid #d0d2d1; padding-top:8px;"></div>
+    
 
-    <ul class="slides1 products asRows fl mt1lh mb1lh">
+    <ul class="products asRows fl mt1lh mb1lh">
         <% @post.products.each do |product| %>
-          <!-- <li class="four columns"> -->
           <%= render 'spree/shared/product_simple', :product => product %>
-          <!-- </li> -->
         <% end %>
     </ul>
-    <!-- <button class="next pa bg0 b0 c01" style="z-index:4; color:silver !important; top:50%; right:10px;">
-      <i class="icon-chevron-right"></i>
-    </button>
-    <div class="post-products" data-hook="post-show-related-products">
-      <%# render 'spree/shared/products', :products => @post.products %>
-    </div> -->
+   
   </div>
   <% end %>
 
   <%= render "spree/blogs/shared/disqus_comments" %>
 
-<!-- </div> -->
 </div>
-<div class="rightSide fl fourContOnBig container1 fourColOnBig1 omegaOnBig1 clearfix mb1lh">
-  <!--<h3 class="twelve fourOnDesktop1 fourOnBig columns">Oglasi</h3>-->
-  <div class="banner four columns fiveOnTablet alpha1 mb1lh">
+
+<div class="rightSide fl fourContOnBig clearfix mb1lh">
+  <div class="banner four columns fiveOnTablet mb1lh">
    <a data-pin-do="embedUser" href="http://pinterest.com/lekarnar/"></a>
   </div>
-  <div class="banner four columns fiveOnTablet alpha1 mb1lh">
+  <div class="banner four columns fiveOnTablet mb1lh">
     <a class="twitter-timeline" href="https://twitter.com/LekarnarTim" data-widget-id="354522049110233088">Tweets by @LekarnarTim</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
   </div>
-  <div class="banner four columns fiveOnTablet alpha1 mb1lh">
+  <div class="banner four columns fiveOnTablet mb1lh">
     
   </div>
 </div>

@@ -1,4 +1,4 @@
-<% self.title = @blog.name %>
+<% self.title = (params[:query] ? params[:query] + " - " : "") + @blog.name + (params[:page] ? " | " + params[:page] : "") %>
 <% content_for :wrapper_class do %>blog<% end %>
 
 <%= link_to blog_posts_path(@blog, :format => 'rss'), :id => "posts-rss", :class => "db", :style => "margin-right:10px;line-height:30px;" do %>
@@ -14,7 +14,6 @@
 	  
 	    <%= render :partial => 'spree/blogs/shared/preview', :collection => @posts, :as => :post %>
 	  
-	  <!-- <br class="clear"/> -->
 	</ul>  
 <% end %>
 

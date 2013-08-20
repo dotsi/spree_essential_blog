@@ -4,16 +4,16 @@
           
       <li>
               
-        <ul class="posts badgeList sideList1 filterList1 w100p">
+        <ul class="posts badgeList w100p">
+
           <% posts.each do |post| %>
-        
-                <%# posts_by_day.each_with_index do |post, index| %>
-                  <li<% if @post && post.title == @post.title %> class="current"<% end %>><%= link_to h(post.title), post_seo_path(@blog, post) %></li>
-                <% end %>
-              </ul>
-              <!-- <br class="clear"/> -->
-            </li>
-          <%# end %>
+              <li<% if @post && post.title == @post.title %> class="current"<% end %>><%= link_to h(post.title), post_seo_path(@blog, post) %></li>
+          <% end %>
+
         </ul>
+
+      </li>
+      
+    </ul>
 
 </div>
