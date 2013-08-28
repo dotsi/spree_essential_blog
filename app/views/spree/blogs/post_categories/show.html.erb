@@ -1,6 +1,6 @@
 <% self.title = @category.name + ( params[:page] ? " | stran #{params[:page]}" : "" ) + " - " + @blog.name %>
 <% content_for :wrapper_class do %>blog<% end %>
-<h1><%= @blog.name %> <i class="icon-angle-right"></i> <%=@category.name %></h1>
+<h1 class="twelve columns"><%= @blog.name %> <i class="icon-angle-right"></i> <%=@category.name %></h1>
 
 <ul class="posts content asRows clearfix cb fw300" data-hook="post-categories-show">
 
