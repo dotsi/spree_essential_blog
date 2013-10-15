@@ -31,7 +31,7 @@
   <div class="content">
     <div class="post-title twelve columns eightOnBig" data-hook="post-show-title">
       <% if @blog.permalink == "blog" %><h5><%= h l(@post.posted_at, :format => :date_only).gsub(/\s0/, ' ') %></h5><% end %>
-      <h1><%=h @post.title %> <span class="special dib button b0 c0 sale pink" style="font-size:12px;"><% if @post.expired? %>poteklo<% elsif @post.expires_at %><%= l @post.expires_at, :format => :date_only %><% end %></span></h1>
+      <h1><%=h @post.title %> <span class="special dib button b0 c0 sale pink" style="font-size:12px;"><% if @post.expired? %>poteklo<% elsif @post.expires_at %>do <%= l @post.expires_at, :format => :date_only %><% end %></span></h1>
     </div>
 
     <% if @post.has_images? %>
@@ -52,8 +52,6 @@
       <%= @post.rendered_body %>
       <% if @post.expired? %>
         <p class="i">Akcija je potekla.</p>
-      <% elsif @post.expires_at %> <%# Akcija velja do: %>
-        <p class="i"><%= l @post.expires_at, :format => :date_only %></p>
       <% end %>
     </div>  
 
