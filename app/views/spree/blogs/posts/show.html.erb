@@ -10,13 +10,22 @@
   <meta property="og:image" content="<%= "http://"+Spree::Config[:site_url]+@post.images.first.attachment.url(:medium) if @post.images.size > 0 %>">
 
   <script type="text/javascript">
-(function(d){
-  var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
-  p.type = 'text/javascript';
-  p.async = true;
-  p.src = '//assets.pinterest.com/js/pinit.js';
-  f.parentNode.insertBefore(p, f);
-}(document));
+// (function(d){
+//   var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+//   p.type = 'text/javascript';
+//   p.async = true;
+//   p.src = '//assets.pinterest.com/js/pinit.js';
+//   f.parentNode.insertBefore(p, f);
+// }(document));
+</script>
+
+<script type="text/javascript">
+
+  (function(){function e(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//www.yotpo.com/js/yQuery.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}window.attachEvent?window.attachEvent("onload",e):window.addEventListener("load",e,!1)})();
+
+</script>
+<script> 
+  var yotpo_app_key = "hD64bzDLPCpguTgSMAuMorqBJUu1sfvE8lTUrAw3";
 </script>
 
 <% end %>
@@ -31,7 +40,7 @@
   <div class="content">
     <div class="post-title twelve columns eightOnBig" data-hook="post-show-title">
       <% if @blog.permalink == "blog" %><h5><%= h l(@post.posted_at, :format => :date_only).gsub(/\s0/, ' ') %></h5><% end %>
-      <h1><%=h @post.title %><% if !@post.expires_at %> <span class="special dib button b0 c0 sale pink" style="font-size:12px;"><% if @post.expired? %>poteklo<% elsif @post.expires_at %>do <%= l @post.expires_at, :format => :date_only %><% end %></span><% end %></h1>
+      <h1><%=h @post.title %><% if @post.expires_at != nil %> <span class="special dib button b0 c0 sale pink" style="font-size:12px;"><% if @post.expired? %>poteklo<% elsif @post.expires_at %>do <%= l @post.expires_at, :format => :date_only %><% end %></span><% end %></h1>
     </div>
 
     <% if @post.has_images? %>
@@ -96,7 +105,18 @@
 
 <div class="rightSide fl fourContOnBig clearfix mb1lh">
   <div class="banner four columns fiveOnTablet mb1lh">
-   <a data-pin-do="embedUser" href="http://pinterest.com/lekarnar/"></a>
+   <!-- <a data-pin-do="embedUser" href="http://pinterest.com/lekarnar/"></a> -->
+   <div id="y-embedded-widget" class="yotpo embedded-widget" 
+    data-appkey="hD64bzDLPCpguTgSMAuMorqBJUu1sfvE8lTUrAw3" 
+    data-product-id="yotpo_global_reviews" 
+    data-layout="reviews" 
+    data-width="100" 
+    data-reviews="5" 
+    data-header-text="Zadnja mnenja" 
+    data-header-background-color="ffffff" 
+    data-body-background-color="FFFFFF" 
+    data-font-size="18" 
+    data-font-color="919191"></div>
   </div>
   <div class="banner four columns fiveOnTablet mb1lh">
     <a class="twitter-timeline" href="https://twitter.com/LekarnarTim" data-widget-id="354522049110233088">Tweets by @LekarnarTim</a>
