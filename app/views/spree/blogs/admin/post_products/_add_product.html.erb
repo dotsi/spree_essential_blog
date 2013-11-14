@@ -19,6 +19,12 @@
                   :id => 'add_product_to_post',
                   :class => 'button fullwidth',
                   'data-update' => 'post-form-wrapper' %>
+
+      <%= link_to_with_icon 'icon-trash', "Odstrani vse", admin_post_products_url(@post, :destroy_all => "1"), 
+                  :method => :post,
+                  :id => 'destroy_product_to_post',
+                  :class => 'button fullwidth',
+                  'data-update' => 'post-form-wrapper' %>
     </div>
 
   </fieldset>

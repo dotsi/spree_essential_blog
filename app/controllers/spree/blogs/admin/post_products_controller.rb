@@ -4,7 +4,12 @@ class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
   
   def create
     position = @post.products.count
-    if params[:taxon_id] != ""
+    if params[:destroy_all]
+       for p in @post.post_products
+        p.destroy
+       end
+       redirect_to admin_post_products_url(@post) and return
+    elsif params[:taxon_id] != ""
       @taxon = Spree::Taxon.find(params[:taxon_id])
       for p in @taxon.products
         Spree::PostProduct.create(:post_id => @post.id, :product_id => p.id, :position => position)
